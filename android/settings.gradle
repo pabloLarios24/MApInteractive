@@ -1,0 +1,3 @@
+rootProject.name = 'MapInteractive'
+
+include ':app'
