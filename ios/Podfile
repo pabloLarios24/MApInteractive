@@ -2,9 +2,12 @@
 # platform :ios, '9.0'
 platform :ios, '9.3'
 target 'MapInteractive' do
+  rn_maps_path = '../node_modules/react-native-maps'
   use_frameworks!
   pod 'ViroReact', :path => '../node_modules/react-viro/ios/'
   pod 'ViroKit', :path => '../node_modules/react-viro/ios/dist/ViroRenderer/'
+
+  pod 'react-native-maps', :path => '../node_modules/react-native-maps'
 
 end
 # Hack to fix linker error between GVRSDK and React
