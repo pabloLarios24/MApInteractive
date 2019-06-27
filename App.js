@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {ViroARSceneNavigator} from 'react-viro'
 import InitialScene from './src/HelloWorldSceneAR'
-import {NotIdStack} from './src/Navigation/Stack/StackMaster'
+import Stack from './src/Navigation/Stack/StackMaster'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,8 +20,7 @@ const instructions = Platform.select({
 });
 
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component<{}>  {
   constructor(){
     super()
   }
@@ -31,7 +30,7 @@ export default class App extends Component<Props> {
         {/*<ViroARSceneNavigator 
           apiKey={"71F86416-C7DA-48DA-8090-7A6EE13000CA"}
         initialScene={{scene: InitialScene}}/>*/}
-        <NotIdStack/>
+        <Stack/>
       </View>
     );
   }

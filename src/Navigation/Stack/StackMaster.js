@@ -1,11 +1,41 @@
-import {createAppContainer, createStackNavigator } from 'react-navigation';
-import InitialScreen from '../../Login/InitialView'
+import React from 'react'
+import {createAppContainer, createStackNavigator , NavigationHe } from 'react-navigation';
+import  Routes  from '../../Redux/Config/routes'
+import { Provider , connect } from 'react-redux'
+import getStore from './../../Redux/store'
+
 const DontHaveID = createStackNavigator(
-    {
-      Initial: {screen: InitialScreen,
-          navigationOptions:() =>({
-              header: null,
-          })},
+    Routes,{
+        headerMode:'screen'
     }
 )
-export const NotIdStack = createAppContainer(DontHaveID)
+
+const navReducer = ( state , action) => {
+    const newState = DontHaveID.router.getStateForAction( action , state )
+    return newState || state
+}
+
+class App extends React.Component{
+    render(){
+        return(
+            <NotIdStack
+            />
+        )
+    }
+}
+
+const store = getStore( navReducer )
+
+const AppIndex = connect( state => ({nav: state.nav}))(App)
+
+export default Index = () =>{
+    return(
+        <Provider
+            store={store}
+        >
+            <AppIndex/>
+        </Provider>
+    )
+}
+
+ const NotIdStack = createAppContainer(DontHaveID)
