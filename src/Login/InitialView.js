@@ -9,6 +9,9 @@ export default class InitialView extends React.Component{
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate("Map")}>
                     <Text>Mapa</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate("Model")}>
+                    <Text>Modelo</Text>
+                </TouchableOpacity>
             </View>
         )
     }

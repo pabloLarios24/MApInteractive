@@ -3,6 +3,7 @@ import {createAppContainer, createStackNavigator , NavigationHe } from 'react-na
 import  Routes  from '../../Redux/Config/routes'
 import { Provider , connect } from 'react-redux'
 import getStore from './../../Redux/store'
+import {getCurrentLocation} from '../../Redux/Actions/action'
 
 const DontHaveID = createStackNavigator(
     Routes,{
@@ -17,6 +18,7 @@ const navReducer = ( state , action) => {
 
 class App extends React.Component{
     render(){
+        //console.log(this.props.nav)
         return(
             <NotIdStack
             />
@@ -25,6 +27,18 @@ class App extends React.Component{
 }
 
 const store = getStore( navReducer )
+
+const mapStateToProps = (state) => ({
+	region: state.app.region,
+
+});
+
+const mapActionCreators = {
+	getCurrentLocation,
+};
+store.subscribe(()=>{
+    console.log(store.getState(),"Store")
+})
 
 const AppIndex = connect( state => ({nav: state.nav}))(App)
 

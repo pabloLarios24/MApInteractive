@@ -1,8 +1,22 @@
 import React from 'react'
 import {View,Text} from 'react-native'
-import MapView,{Marker} from 'react-native-maps';
+import MapView,{Marker} from 'react-native-maps'
+import { Provider , connect } from 'react-redux'
+import {getCurrentLocation} from '../../Redux/Actions/action'
 
-export default class Map extends React.Component{
+class Map extends React.Component{
+
+    componentDidMount(){
+        this.init()
+    }
+    async init (){
+         await this.props.getCurrentLocation()
+         console.log(this.props)
+    }
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps)
+    }
+
     render(){
         return(
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
@@ -29,3 +43,18 @@ export default class Map extends React.Component{
         )
     }
 }
+
+const mapStateToProps = (state) => 
+{
+    return{
+        region: state.region,
+    
+    }
+}
+
+const mapActionCreators = {
+	getCurrentLocation,
+};
+
+
+export default connect(mapStateToProps, mapActionCreators)(Map)
